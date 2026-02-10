@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { CloseIcon } from "@/components/icons";
+import { CloseIcon } from "@/components/icons/Header";
 import styles from "./Header.module.scss";
 
 const navLinks = [
@@ -65,9 +65,7 @@ export function Header() {
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            <span className={styles.burgerLine} />
-            <span className={styles.burgerLine} />
-            <span className={styles.burgerLine} />
+            <Image src="/icons/burger.svg" alt="" width={40} height={40} />
           </button>
         </div>
       </header>

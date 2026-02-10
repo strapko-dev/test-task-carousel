@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { ReduxProvider } from "@/components/providers";
-import { Header } from "@/components/Header";
+import { ReduxProvider } from "@/components/providers/ReduxProvider";
+import { Header } from "@/components/Header/Header";
+import { Footer } from "@/components/Footer/Footer";
+import styles from "./page.module.scss";
 import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
@@ -15,10 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={styles.app}>
         <ReduxProvider>
           <Header />
-          {children}
+          <main>{children}</main>
+          <Footer />
         </ReduxProvider>
       </body>
     </html>

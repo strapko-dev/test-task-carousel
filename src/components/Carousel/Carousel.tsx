@@ -9,9 +9,9 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import type { CardData } from "@/store/features/nftsSlice";
-import { Card } from "@/components/Card";
+import { Card } from "@/components/Card/Card";
 import styles from "./Carousel.module.scss";
-import { ArrowLeftIcon, ArrowRightIcon } from "../icons";
+import { ArrowLeftIcon, ArrowRightIcon } from "../icons/Arrows";
 
 interface CarouselProps {
   items: CardData[];
