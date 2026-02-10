@@ -1,0 +1,76 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: $color-text-secondary;
+  text-align: center;
+  letter-spacing: -0.01em;
+
+  @include responsive(md) {
+    font-size: 2.25rem;
+  }
+}
+
+.carouselWrapper {
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.track {
+  position: relative;
+  height: 360px; // approximate card height
+}
+
+.slide {
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+// Navigation arrows
+.navigation {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: $color-surface;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $color-text;
+  transition: background $transition-duration ease;
+
+  &:hover {
+    background: #f3f4f6;
+  }
+}
+
+.navDivider {
+  width: 1px;
+  height: 28px;
+  background: #e5e7eb;
+}

@@ -1,0 +1,99 @@
+@use "../../styles/variables" as *;
+
+.card {
+  flex-shrink: 0;
+  width: 240px;
+  background: $color-surface;
+  border-radius: 16px;
+  box-shadow: $shadow;
+  overflow: hidden;
+  user-select: none;
+  padding: 12px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.timer {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.info {
+  padding: 12px 4px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $color-text;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.bid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bidLabel {
+  font-size: 0.75rem;
+  color: $color-text-secondary;
+}
+
+.bidValue {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.bidButton {
+  padding: 10px 18px;
+  background: $color-text;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background $transition-duration ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
