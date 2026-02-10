@@ -1,56 +1,106 @@
-# Test Task Carousel
+# DiveSea — NFT Carousel
 
-A clean Next.js project with modern stack.
+Интерфейс маркетплейса NFT с бесконечной каруселью, построенный на Next.js.
 
-## Tech Stack
+## Стек технологий
 
 - **Framework:** Next.js 14 (App Router)
 - **State Management:** Redux Toolkit
-- **Styling:** SCSS (Sass)
+- **Styling:** SCSS Modules
 - **Animations:** Framer Motion
 - **Language:** TypeScript
+- **API:** CoinGecko NFT List
 
-## Project Structure
+## Структура проекта
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Home page
-│   └── page.module.scss    # Page styles
-├── components/             # React components
-│   ├── Counter/            # Example component with Redux
-│   └── providers/          # Context providers
-├── store/                  # Redux store
-│   ├── features/           # Redux slices
-│   ├── hooks.ts            # Typed hooks
-│   ├── store.ts            # Store configuration
-│   └── index.ts            # Store exports
-└── styles/                 # Global styles
-    ├── _variables.scss     # SCSS variables
-    ├── _mixins.scss        # SCSS mixins
-    └── globals.scss        # Global styles
+├── app/                        # Next.js App Router
+│   ├── layout.tsx              # Root layout (Header + Footer)
+│   ├── page.tsx                # Главная страница с каруселью
+│   └── page.module.scss
+├── components/
+│   ├── Header/                 # Фиксированный хедер с мобильным меню
+│   ├── Footer/                 # Футер с навигацией
+│   ├── NftCard/                # Карточка NFT (таймер, бид, изображение)
+│   ├── NftCarousel/            # Виртуализированная бесконечная карусель
+│   ├── icons/                  # SVG-иконки как React-компоненты
+│   └── providers/              # Redux Provider
+├── store/
+│   ├── features/
+│   │   └── nftsSlice.ts        # Async thunk для CoinGecko API
+│   ├── store.ts
+│   └── hooks.ts                # Типизированные useAppDispatch / useAppSelector
+├── lib/
+│   └── utils.ts                # Утилиты (форматирование таймера и т.д.)
+├── styles/
+│   ├── _variables.scss
+│   ├── _mixins.scss
+│   └── globals.scss
+└── data/
+    └── nfts.ts                 # Моковые данные (fallback)
 ```
 
-## Getting Started
+## Запуск локально
 
-1. Install dependencies:
+### Требования
+
+- Node.js ≥ 18
+- npm ≥ 9
+
+### Установка и запуск
 
 ```bash
+# Клонировать репозиторий
+git clone https://github.com/strapko-dev/test-task-carousel.git
+cd test-task-carousel
+
+# Установить зависимости
 npm install
-```
 
-2. Run the development server:
-
-```bash
+# Запустить dev-сервер
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Открыть [http://localhost:3000](http://localhost:3000) в браузере.
 
-## Available Scripts
+### Production-сборка
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+```bash
+npm run build
+npm run start
+```
+
+## Запуск в Docker
+
+### Требования
+
+- Docker ≥ 20
+
+### Сборка и запуск
+
+```bash
+# Собрать образ
+docker build -t divesea .
+
+# Запустить контейнер
+docker run -p 3000:3000 divesea
+```
+
+Открыть [http://localhost:3000](http://localhost:3000) в браузере.
+
+## Скрипты
+
+| Команда         | Описание                  |
+| --------------- | ------------------------- |
+| `npm run dev`   | Dev-сервер с hot reload   |
+| `npm run build` | Production-сборка         |
+| `npm run start` | Запуск production-сервера |
+| `npm run lint`  | Линтинг (ESLint)          |
+
+## Адаптивность
+
+- **≤ 768px** — мобильная версия (бургер-меню, карточки в колонку)
+- **769px – 1920px** — десктоп, контент центрирован, боковые поля расширяются
+- **1921px – 3839px (2K)** — контент масштабируется (`zoom: 1.334`)
+- **≥ 3840px (4K)** — контент масштабируется (`zoom: 2`)
